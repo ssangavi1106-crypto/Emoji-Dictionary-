@@ -1,0 +1,34 @@
+emoji_dict = {
+    'smile': '😊', 'laugh': '😂', 'love': '❤️', 'thumbsup': '👍',
+    'star': '⭐', 'fire': '🔥', 'rocket': '🚀', 'pizza': '🍕'
+}
+
+reverse_dict = {v: k for k, v in emoji_dict.items()}
+
+def text_to_emoji(text):
+    words = text.lower().split()
+    result = []
+    for word in words:
+        result.append(emoji_dict.get(word, word))
+    return ' '.join(result)
+
+def emoji_to_text(emoji_input):
+    emojis = emoji_input.split()
+    result = []
+    for em in emojis:
+        result.append(reverse_dict.get(em, em))
+    return ' '.join(result)
+
+while True:
+    choice = input("1: Text to Emoji
+2: Emoji to Text
+3: Quit
+Choose: ")
+    if choice == '1':
+        text = input("Enter text: ")
+        print(text_to_emoji(text))
+    elif choice == '2':
+        emo = input("Enter emojis: ")
+        print(emoji_to_text(emo))
+    elif choice == '3':
+        break
